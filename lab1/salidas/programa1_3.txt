@@ -1,35 +1,35 @@
  
  
 Teoleng S.A 
-Innovaci√≥n que conecta conocimiento   
+InnovaciÛn que conecta conocimiento   
  
-Direcci√≥n  
+DirecciÛn  
 Av. Roosevelt 1234  
-Tel√©fono:  +598 4 321 4321 
+TelÈfono:  +598 4 321 4321 
 FACTURA 
-FACTURA N.¬∫ 3 
+FACTURA N.∫ 3 
 FECHA:  07-03-2026 
 A: 
 Distribuidora del Oeste S.A.  
 18 de Julio, 1 234 
 Montevideo, 2 0400 
-Tel√©fono:  +598 2027 2027 
+TelÈfono:  +598 2027 2027 
  
 COMENTARIOS O INSTRUCCIONES ESPECIALES:  
-Entrega coordinada en horario comercial. Verificar mercader√≠a al momento de la recepci√≥n.  
+Entrega coordinada en horario comercial. Verificar mercaderÌa al momento de la recepciÛn.  
 VENDEDOR  
-N√öMERO DE 
+N⁄MERO DE 
 ORDEN DE 
 COMPRA 
-SOLICITANTE  T√âRMINOS  
-√ìscar 
-Mart√≠nez  212124 Departamento de Ventas  Pago a la recepci√≥n  
+SOLICITANTE  T…RMINOS  
+”scar 
+MartÌnez  212124 Departamento de Ventas  Pago a la recepciÛn  
  
-CANTIDAD  DESCRIPCI√ìN  PRECIO POR 
+CANTIDAD  DESCRIPCI”N  PRECIO POR 
 UNIDAD TOTAL 
-1 Servicio t√©cnico b√°sico  {N*A-001} 999,99   999,99   
-2 √çTEMS*4455*ZXCV<>  210,70  210,70  
-3 Ajuste manual  \ ‚Äúsistema ‚Äù 320,00  320,00  
+1 Servicio tÈcnico b·sico  {N*A-001} 999,99   999,99   
+2 ÕTEMS*4455*ZXCV<>  210,70  210,70  
+3 Ajuste manual  \ ìsistema î 320,00  320,00  
 5 Pruebas | OK 300,00  300,00 
     
     
@@ -37,7 +37,7 @@ UNIDAD TOTAL
     
  SUBTOTAL  1830,69 
  TOTAL CON IMPUESTOS  2233,45  
- D√âBITO BANCARIO  2144,10 
-Todos los cheques se extender√°n a nombre de  Teoleng S.A  
-Si tiene alguna duda sobre esta factura , p√≥ngase en  contacto al +598 4321 4321 
-¬°GRACIAS POR SU CONFIANZA!  
+ D…BITO BANCARIO  2144,10 
+Todos los cheques se extender·n a nombre de  Teoleng S.A  
+Si tiene alguna duda sobre esta factura , pÛngase en  contacto al +598 4321 4321 
+°GRACIAS POR SU CONFIANZA!  

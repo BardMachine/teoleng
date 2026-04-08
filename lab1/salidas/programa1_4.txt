@@ -1,31 +1,31 @@
  
  
 Teoleng S.A  
-InnovaciÃ³n que conecta conocimiento  
+Innovación que conecta conocimiento  
  
-DirecciÃ³n  
+Dirección  
 Av. Roosevelt 1234  
-TelÃ©fono:  +598 4321 4321  
+Teléfono:  +598 4321 4321  
 FACTURA 
-FACTURA N.Âº 4 
+FACTURA N.º 4 
 FECHA:  22-03-2026 
 A: 
 Distribuidora del Oeste S.A.  
 18 de Julio, 1234  
 Montevideo, 20400  
-TelÃ©fono:  +598 2027 2027 
+Teléfono:  +598 2027 2027 
  
 COMENTARIOS O INSTRUCCIONES ESPECIALES:  
-Entrega coordinada en horario comercial. Verificar mercaderÃ­a al momento de la recepciÃ³n.  
+Entrega coordinada en horario comercial. Verificar mercadería al momento de la recepción.  
 VENDEDOR  
-NÃšMERO DE 
+NÚMERO DE 
 ORDEN DE 
 COMPRA 
-SOLICITANTE  TÃ‰RMINOS  
-Ã“scar 
-MartÃ­nez  212124 Departamento de Ventas  Pago a la recepciÃ³n  
+SOLICITANTE  TÉRMINOS  
+Óscar 
+Martínez  212124 Departamento de Ventas  Pago a la recepción  
  
-CANTIDAD  DESCRIPCIÃ“N  PRECIO POR 
+CANTIDAD  DESCRIPCIÓN  PRECIO POR 
 UNIDAD TOTAL 
 7 ITEM#001   100,56  703,92  
 4 SERVICIO:: LS //v2 195,56  782,24  
@@ -37,7 +37,7 @@ UNIDAD TOTAL
     
  SUBTOTAL  5326,16  
  TOTAL CON IMPUESTOS  6497,92  
- DÃ‰BITO BANCARIO  6367,96 
-Todos los cheques se extenderÃ¡n a nombre de  Teoleng S.A  
-Si tiene alguna duda sobre esta factura , pÃ³ngase en contacto al +598 4321 4321  
-Â¡GRACIAS POR SU CONFIANZA!  
+ DÉBITO BANCARIO  6367,96 
+Todos los cheques se extenderán a nombre de  Teoleng S.A  
+Si tiene alguna duda sobre esta factura , póngase en contacto al +598 4321 4321  
+¡GRACIAS POR SU CONFIANZA!  

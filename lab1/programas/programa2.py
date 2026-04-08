@@ -6,11 +6,17 @@ from programa1 import programa1
 def programa2(RutaFactura):
     
     texto = programa1(RutaFactura)
-    fecha = re.search(r"(\d{4})-(\d{2})-(\d{2})", texto)
-    monto = re.search(r"DÉBITO BANCARIO:(\s)*(\d)*,(\d{2})", texto, flags=re.IGNORECASE)
-    monto = re.search(r"(\d)*,(\d{2})",monto)
-
-    return fecha, monto
+    fecha_rev = re.search(r"(\d{2})-(\d{2})-(\d{4})", texto)
+    costo = re.search(r"DÉBITO(\s)*BANCARIO(\s)*(\d)*,(\d{2})", texto, flags=re.IGNORECASE)
+    if costo and fecha_rev:
+        fecha_rev = fecha_rev.group()
+        fecha = ""
+        fecha = fecha_rev[6:10] + "-" + fecha_rev[3:5] + "-" + fecha_rev[0:2]
+        monto = re.search(r"(\d)*,(\d{2})",costo.group())
+        monto = monto.group()
+        return fecha, monto
+    else:
+        return "",""
   
 
 if __name__ == '__main__':

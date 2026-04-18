@@ -2,12 +2,17 @@
 import re
 import sys
 
-def programa4(RutaXML):
-    '''
-    SU CÓDIGO
-    '''
+def leerXML(ruta):
     text = ""
+    xml = open(ruta, "r")
+    if xml.closed:
+        return None
+    text = xml.read()
+    xml.close()
     return text
+
+def programa4(RutaXML):
+    return leerXML(RutaXML)
   
 
 if __name__ == '__main__':
@@ -15,6 +20,6 @@ if __name__ == '__main__':
     salida = sys.argv[2]   # archivo salida (param)
     
     ret = programa4(entrada)      # ejecutar 
-    f = open(salida, 'w')  # abrir archivo salida
+    f = open(salida, 'w', encoding='utf-8')  # abrir archivo salida
     f.write(ret)           # escribir archivo salida
     f.close()              # cerrar archivo salida

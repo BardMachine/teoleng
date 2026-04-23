@@ -1,23 +1,36 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
-
-from programa1 import leerPdf
+from programa1 import programa1
 
 def programa3(RutaFactura):
-    text = leerPdf(RutaFactura)
-    if text == None:
-        return None
-    
-    patron = re.compile(r"^([0-9]+)[ ]+(.+?)[ ]+([0-9]+,[0-9]+)[ ]+([0-9]+,[0-9]+)[ ]+", flags = re.MULTILINE)
-    encuentros = patron.findall(text)
-
-    if encuentros == None:
-        return None # perdicion y sufrimiento
-
+    texto = programa1(RutaFactura)
     res = ""
-    for m in encuentros:
-        res += f"Cant: {m[0]} |Desc: {m[1]} | {m[2]} c/u |Total:  {m[3]}\n"
+    inicio = re.search(
+        r"CANT\w*.*?TOTAL",
+        texto,
+        re.IGNORECASE | re.DOTALL
+    )
+    """Busco desde cant hasta total ignorando mayusculas y saltos de linea"""
+    if inicio:
+        tabla = texto[inicio.end():]
+    else:
+        tabla = ""
+    """"Busco las cosas con formato cant,desc,... """
+    items = re.finditer(
+        r"^\s*(\d{1,3})\s+(.*?)\s+(\d+,\d{2})\s+(\d+,\d{2})\s*$",
+        tabla,
+        re.MULTILINE
+    )
+    for match in items:
+        cant = match.group(1)
+        desc = match.group(2).strip()
+        puni = match.group(3)
+        total = match.group(4)
+
+        res += f"Cant: {cant} |Desc: {desc} | {puni} c/u |Total:  {total}\n"
+
+    return res
     
     return res
 
@@ -27,6 +40,6 @@ if __name__ == '__main__':
  
     ret = programa3(entrada)      # ejecutar 
     
-    f = open(salida, 'w', encoding='utf-8')  # abrir archivo salida
-    f.write(ret)           # escribir archivo salida
+    with open(salida, 'w', encoding='utf-8') as f:  # abrir archivo salida
+        f.write(ret)           # escribir archivo salida
     f.close()              # cerrar archivo salida

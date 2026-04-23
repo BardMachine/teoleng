@@ -1,39 +1,31 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
-
+from programa4 import programa4
 from programa2 import programa2
-from programa4 import leerXML
+from programa1 import programa1
+from programa5 import programa5
 
 def programa6(RutaPdf,RutaXML):
+    text = ""
+    xml = programa4(RutaXML)
     fecha, monto = programa2(RutaPdf)
-    if fecha == None:
-        return None
-    if monto == None:
-        return None
+    patron = r'<BanTeng:Movimiento[^>]*Importe="' + monto + r'"[^>]*Fecha="' + fecha + r'"[^>]*/>\s*\n?'
+    if not re.search(patron, xml):
+        return xml
 
-
-    xml = leerXML(RutaXML)
-    patron = re.compile(r"^.*?Importe=\"(.+?)\" Fecha=\"([0-9]+-[0-9]+-[0-9]+)\".*?$", flags = re.MULTILINE)
-    encuentros = patron.finditer(xml)
-
-    # no encontro ningun movimiento en el xml
-    if not encuentros:
-        return (False)
-
-    coincidencias = 0
-
-    text = xml
-    for m in encuentros:
-        if fecha == m.group(2) and monto == m.group(1):
-            coincidencias += 1
-            text = text[:m.start() - 1] + text[m.end():] # el - 1 es para borrar el newline
-            
+    xml = re.sub(patron, '', xml, count=1)
+    match_total = re.search(r'<BanTeng:TotalMovimientos>(\d+)</BanTeng:TotalMovimientos>', xml)
     
-    patron_mov = re.compile(r"<BanTeng:TotalMovimientos>([0-9]+)</BanTeng:TotalMovimientos>", flags = re.MULTILINE)
-    m = patron_mov.search(text)
-    coincidencias = int(m.group(1)) - coincidencias
-    text = patron_mov.sub(f"<BanTeng:TotalMovimientos>{coincidencias}</BanTeng:TotalMovimientos>", text)
+    if match_total:
+        total = int(match_total.group(1))
+        totaln = total - 1
+
+        text = re.sub(
+            r'<BanTeng:TotalMovimientos>\d+</BanTeng:TotalMovimientos>',
+            '<BanTeng:TotalMovimientos>' + str(totaln) + '</BanTeng:TotalMovimientos>',
+            xml
+        )
 
     return text
  
@@ -45,6 +37,6 @@ if __name__ == '__main__':
  
     ret = programa6(entrada_pdf,entrada_xml)      # ejecutar 
     
-    f = open(salida, 'w', encoding='utf-8')  # abrir archivo salida
+    f = open(salida, 'w', encoding='utf-8') # abrir archivo salida
     f.write(ret)           # escribir archivo salida
     f.close()              # cerrar archivo salida

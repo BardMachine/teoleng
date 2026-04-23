@@ -1,31 +1,25 @@
 # -*- coding: utf-8 -*-
 import re
 import sys
-
+from programa4 import programa4
 from programa2 import programa2
-from programa4 import leerXML
+from programa1 import programa1
+
 
 def programa5(RutaPdf,RutaXML):
-    resultado = False
-    
+    resultado=False
+    xml = programa4(RutaXML)
     fecha, monto = programa2(RutaPdf)
-    if fecha == None:
-        return False
-    if monto == None:
-        return False
 
-    xml = leerXML(RutaXML)
-    patron = re.compile(r"^.*?Importe=\"([0-9]+,[0-9]+)\" Fecha=\"([0-9]+-[0-9]+-[0-9]+)\".*?$", flags = re.MULTILINE)
-    encuentros = patron.findall(xml)
+    # Busco fecha + importe del mismo movimiento
+    movimientos = re.findall(
+        r'Importe="([^"]+)"\s+Fecha="([^"]+)"',
+        xml
+    )
 
-    # no encontro ningun movimiento en el xml
-    if not encuentros:
-        return (False)
-
-    for m in encuentros:
-        if fecha == m[1] and monto == m[0]:
-            return (True)
-    
+    for m_xml, f_xml in movimientos:
+        if fecha == f_xml and monto == m_xml:
+            resultado= True
     if resultado:
         return(True)
     else:
@@ -42,6 +36,6 @@ if __name__ == '__main__':
     else:
         ret = "No encontrado"
     
-    f = open(salida, 'w', encoding='utf-8')  # abrir archivo salida
+    f = open(salida, 'w', encoding='utf-8') # abrir archivo salida
     f.write(ret)           # escribir archivo salida
     f.close()              # cerrar archivo salida

@@ -15,7 +15,7 @@ def programa2(RutaFactura):
 
     fecha = f"{m.group(4)}-{m.group(3)}-{m.group(2)}"
 
-    m = re.search(r"(DÉBITO[ \n\r]*BANCARIO)[ \n\r]*([0-9]+),([0-9]+)", text, flags=re.MULTILINE)
+    m = re.search(r"(D[ÉE]BITO[ \n\r]*BANCARIO)[ \n\r]*([0-9]+),([0-9]+)", text, flags=re.MULTILINE)
     if m == None:
         return fecha, None
 

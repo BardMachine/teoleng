@@ -20,19 +20,31 @@ def programa6(RutaPdf,RutaXML):
         return ""
 
     patron = re.compile(r"^.*?Importe=\"(.+?)\" Fecha=\"([0-9]+-[0-9]+-[0-9]+)\".*?$", flags = re.MULTILINE | re.IGNORECASE)
-    encuentros = patron.finditer(xml)
-
-    # no encontro ningun movimiento en el xml
-    if not encuentros:
-        return ""
 
     coincidencias = 0
 
+    # esta es una solucion alternativa si hubiese que sustituir mas de una linea.
+    """
     text = xml
-    for m in encuentros:
+    encuentro = True
+    while encuentro == True:
+        encuentro = False
+        encontrados = patron.finditer(text)
+        for m in encontrados:
+            if fecha == m.group(2) and monto == m.group(1):
+                encuentro = True
+                coincidencias += 1
+                text = text[:m.start() - 1] + text[m.end():] # el - 1 es para borrar el newline
+                break
+    """
+    # solucion final. (sustituye una sola linea)
+    text = xml
+    encontrados = patron.finditer(text)
+    for m in encontrados:
         if fecha == m.group(2) and monto == m.group(1):
             coincidencias += 1
             text = text[:m.start() - 1] + text[m.end():] # el - 1 es para borrar el newline
+            break
     
     patron_mov = re.compile(r"<BanTeng:TotalMovimientos>([0-9]+)</BanTeng:TotalMovimientos>", flags = re.MULTILINE)
     m = patron_mov.search(text)

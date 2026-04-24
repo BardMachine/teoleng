@@ -5,21 +5,20 @@ import sys
 from pypdf import PdfReader
 
 def leerPdf(ruta):
+    text = ""
     lector = PdfReader(ruta)
-    if lector == None:
-        return None
-    if lector.get_num_pages() == 0:
-        lector.close()
-        return None
-    text = lector.pages[0].extract_text()
-    for i in range(1, len(lector.pages)):
-        text += '\n' + lector.pages[i].extract_text()
+    for pagina in lector.pages:
+        text += pagina.extract_text()
     lector.close()
     return text
 
 def programa1(RutaPdf):
-    return leerPdf(RutaPdf)
-
+    try:
+        return leerPdf(RutaPdf)
+    except Exception as e:
+        print(f"No se pudo leer el PDF. ({e})")
+        # Devuelve un string vacio para que no de problemas al llamar progrma1
+        return ""
 
 if __name__ == '__main__':
     entrada = sys.argv[1]  # archivo entrada (param)

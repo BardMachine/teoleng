@@ -5,14 +5,16 @@ import sys
 def leerXML(ruta):
     text = ""
     xml = open(ruta, "r")
-    if xml.closed:
-        return None
     text = xml.read()
     xml.close()
     return text
 
 def programa4(RutaXML):
-    return leerXML(RutaXML)
+    try:
+        return leerXML(RutaXML)
+    except Exception as e:
+        print(f"No se pudo leer el XML. ({e})")
+        return ""
   
 
 if __name__ == '__main__':

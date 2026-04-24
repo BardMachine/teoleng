@@ -5,15 +5,17 @@ import sys
 from programa1 import leerPdf
 
 def programa3(RutaFactura):
-    text = leerPdf(RutaFactura)
-    if text == None:
-        return None
+    try:
+        text = leerPdf(RutaFactura)
+    except Exception as e:
+        print(f"No se pudo leer el PDF. ({e})")
+        return ""
     
-    patron = re.compile(r"^([0-9]+)[ ]+(.+?)[ ]+([0-9]+,[0-9]+)[ ]+([0-9]+,[0-9]+)[ ]+", flags = re.MULTILINE)
+    patron = re.compile(r"^([0-9]+)[ ]+(.+?)[ ]+([0-9]+,[0-9]+)[ ]+([0-9]+,[0-9]+)[ ]+", flags= re.MULTILINE | re.IGNORECASE)
     encuentros = patron.findall(text)
 
     if encuentros == None:
-        return None # perdicion y sufrimiento
+        return "" # perdicion y sufrimiento
 
     res = ""
     for m in encuentros:

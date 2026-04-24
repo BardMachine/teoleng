@@ -6,20 +6,25 @@ from programa2 import programa2
 from programa4 import leerXML
 
 def programa6(RutaPdf,RutaXML):
+    # este carga un pdf y me da la fecha y el monto
     fecha, monto = programa2(RutaPdf)
     if fecha == None:
-        return None
+        return ""
     if monto == None:
-        return None
+        return ""
 
+    try:
+        xml = leerXML(RutaXML)
+    except Exception as e:
+        print(f"No se pudo leer el XML. ({e})")
+        return ""
 
-    xml = leerXML(RutaXML)
-    patron = re.compile(r"^.*?Importe=\"(.+?)\" Fecha=\"([0-9]+-[0-9]+-[0-9]+)\".*?$", flags = re.MULTILINE)
+    patron = re.compile(r"^.*?Importe=\"(.+?)\" Fecha=\"([0-9]+-[0-9]+-[0-9]+)\".*?$", flags = re.MULTILINE | re.IGNORECASE)
     encuentros = patron.finditer(xml)
 
     # no encontro ningun movimiento en el xml
     if not encuentros:
-        return (False)
+        return ""
 
     coincidencias = 0
 
@@ -28,7 +33,6 @@ def programa6(RutaPdf,RutaXML):
         if fecha == m.group(2) and monto == m.group(1):
             coincidencias += 1
             text = text[:m.start() - 1] + text[m.end():] # el - 1 es para borrar el newline
-            
     
     patron_mov = re.compile(r"<BanTeng:TotalMovimientos>([0-9]+)</BanTeng:TotalMovimientos>", flags = re.MULTILINE)
     m = patron_mov.search(text)
@@ -36,7 +40,6 @@ def programa6(RutaPdf,RutaXML):
     text = patron_mov.sub(f"<BanTeng:TotalMovimientos>{coincidencias}</BanTeng:TotalMovimientos>", text)
 
     return text
- 
 
 if __name__ == '__main__':
     entrada_pdf = sys.argv[1]  # archivo entrada (param)

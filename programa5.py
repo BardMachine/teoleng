@@ -22,10 +22,6 @@ def programa5(RutaPdf,RutaXML):
     patron = re.compile(r"^.*?Importe=\"([0-9]+,[0-9]+|[0-9]+)\" Fecha=\"([0-9]+-[0-9]+-[0-9]+)\".*?$", flags = re.MULTILINE | re.IGNORECASE)
     encuentros = patron.findall(xml)
 
-    # no encontro ningun movimiento en el xml
-    if not encuentros:
-        return False
-
     for m in encuentros:
         # lo encontramos
         if fecha == m[1] and monto == m[0]:

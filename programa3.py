@@ -14,9 +14,6 @@ def programa3(RutaFactura):
     patron = re.compile(r"^([0-9]+)[ ]+(.+?)[ ]+([0-9]+,[0-9]+)[ ]+([0-9]+,[0-9]+)[ ]+", flags= re.MULTILINE | re.IGNORECASE)
     encuentros = patron.findall(text)
 
-    if encuentros == None:
-        return "" # perdicion y sufrimiento
-
     res = ""
     for m in encuentros:
         res += f"Cant: {m[0]} |Desc: {m[1]} | {m[2]} c/u |Total:  {m[3]}\n"
